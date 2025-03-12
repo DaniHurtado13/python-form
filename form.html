@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD con Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        let usuarioEditando = null; // Variable para saber si estamos editando
+
+        async function cargarUsuarios() {
+            const response = await fetch("http://127.0.0.1:5000/users");
+            const users = await response.json();
+            const tbody = document.getElementById("userTableBody");
+            tbody.innerHTML = ""; // Limpiar tabla antes de agregar datos
+
+            users.forEach(user => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${user.nombre}</td>
+                    <td>${user.correo}</td>
+                    <td>${user.edad}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="editarUsuario('${user._id}', '${user.nombre}', '${user.correo}', '${user.edad}')">Editar</button>
+                        <button class="btn btn-danger btn-sm" onclick="eliminarUsuario('${user._id}')">Eliminar</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        async function agregarOActualizarUsuario(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById("nombre").value;
+            const correo = document.getElementById("email").value;
+            const edad = document.getElementById("edad").value;
+
+            if (usuarioEditando) {
+                // ACTUALIZAR USUARIO
+                const response = await fetch(`http://127.0.0.1:5000/users/${usuarioEditando}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ nombre, correo, edad })
+                });
+
+                const result = await response.json();
+                alert(result.message || result.error);
+                usuarioEditando = null;
+                document.getElementById("submitBtn").textContent = "Agregar Usuario"; // Volver a estado normal
+            } else {
+                // CREAR NUEVO USUARIO
+                const response = await fetch("http://127.0.0.1:5000/users", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ nombre, correo, edad })
+                });
+
+                const result = await response.json();
+                alert(result.message || result.error);
+            }
+
+            document.getElementById("userForm").reset();
+            cargarUsuarios();
+        }
+
+        function editarUsuario(id, nombre, correo, edad) {
+            document.getElementById("nombre").value = nombre;
+            document.getElementById("email").value = correo;
+            document.getElementById("edad").value = edad;
+            document.getElementById("submitBtn").textContent = "Actualizar Usuario";
+            usuarioEditando = id;
+        }
+
+        async function eliminarUsuario(id) {
+            if (!confirm("¿Seguro que quieres eliminar este usuario?")) return;
+
+            const response = await fetch(`http://127.0.0.1:5000/users/${id}`, {
+                method: "DELETE"
+            });
+
+            const result = await response.json();
+            alert(result.message || result.error);
+            cargarUsuarios();
+        }
+
+        document.addEventListener("DOMContentLoaded", cargarUsuarios);
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Gestión de Usuarios</h2>
+        
+        <form id="userForm" class="mb-4" onsubmit="agregarOActualizarUsuario(event)">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="edad" required>
+            </div>
+            <button type="submit" id="submitBtn" class="btn btn-primary">Agregar Usuario</button>
+        </form>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Edad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
