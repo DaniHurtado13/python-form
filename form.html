@@ -6,113 +6,123 @@
     <title>CRUD con Bootstrap</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script>
-        let usuarioEditando = null; // Variable para saber si estamos editando
+        let juegoEditando = null; // Variable para saber si estamos editando
 
-        async function cargarUsuarios() {
-            const response = await fetch("http://127.0.0.1:5000/users");
-            const users = await response.json();
+        async function cargarJuegos() {
+            const response = await fetch("http://127.0.0.1:5000/Juegos");;
+            const juegos = await response.json();
             const tbody = document.getElementById("userTableBody");
             tbody.innerHTML = ""; // Limpiar tabla antes de agregar datos
 
-            users.forEach(user => {
+            juegos.forEach(juego => {
                 const row = document.createElement("tr");
                 row.innerHTML = `
-                    <td>${user.nombre}</td>
-                    <td>${user.correo}</td>
-                    <td>${user.edad}</td>
+                    <td>${juego.nombre}</td>
+                    <td>${juego.genero}</td>
+                    <td>${juego.año_lanzamiento}</td>
+                    <td>${juego.copias_vendidas}</td>
                     <td>
-                        <button class="btn btn-warning btn-sm" onclick="editarUsuario('${user._id}', '${user.nombre}', '${user.correo}', '${user.edad}')">Editar</button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarUsuario('${user._id}')">Eliminar</button>
+                        <button class="btn btn-warning btn-sm" onclick="editarJuego('${juego._id}', '${juego.nombre}', '${juego.genero}', '${juego.año_lanzamiento}', '${juego.copias_vendidas}')">Editar</button>
+                        <button class="btn btn-danger btn-sm" onclick="eliminarJuego('${juego._id}')">Eliminar</button>
                     </td>
                 `;
                 tbody.appendChild(row);
             });
         }
 
-        async function agregarOActualizarUsuario(event) {
+        async function agregarOActualizarJuego(event) {
             event.preventDefault();
 
             const nombre = document.getElementById("nombre").value;
-            const correo = document.getElementById("email").value;
-            const edad = document.getElementById("edad").value;
+            const genero = document.getElementById("genero").value;
+            const año_lanzamiento = document.getElementById("año_lanzamiento").value;
+            const copias_vendidas = document.getElementById("copias_vendidas").value;
 
-            if (usuarioEditando) {
+            if (juegoEditando) {
                 // ACTUALIZAR USUARIO
-                const response = await fetch(`http://127.0.0.1:5000/users/${usuarioEditando}`, {
+                const response = await fetch(`http://127.0.0.1:5000/Juegos/${juegoEditando}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ nombre, correo, edad })
+                    body: JSON.stringify({ nombre, genero, año_lanzamiento, copias_vendidas })
                 });
 
                 const result = await response.json();
                 alert(result.message || result.error);
-                usuarioEditando = null;
-                document.getElementById("submitBtn").textContent = "Agregar Usuario"; // Volver a estado normal
+                juegoEditando = null;
+                document.getElementById("submitBtn").textContent = "Agregar Juego"; // Volver a estado normal
             } else {
                 // CREAR NUEVO USUARIO
-                const response = await fetch("http://127.0.0.1:5000/users", {
+                const response = await fetch("http://127.0.0.1:5000/Juegos", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ nombre, correo, edad })
+                    body: JSON.stringify({ nombre, genero, año_lanzamiento, copias_vendidas })
                 });
 
                 const result = await response.json();
                 alert(result.message || result.error);
             }
 
-            document.getElementById("userForm").reset();
-            cargarUsuarios();
+            document.getElementById("JuegoForm").reset();
+            cargarJuegos();
         }
 
-        function editarUsuario(id, nombre, correo, edad) {
+        function editarJuego(id, nombre, genero, año_lanzamiento, copias_vendidas ) {
             document.getElementById("nombre").value = nombre;
-            document.getElementById("email").value = correo;
-            document.getElementById("edad").value = edad;
-            document.getElementById("submitBtn").textContent = "Actualizar Usuario";
-            usuarioEditando = id;
+            document.getElementById("genero").value = genero;
+            document.getElementById("año_lanzamiento").value = año_lanzamiento;
+            document.getElementById("copias_vendidas").value = copias_vendidas;
+            document.getElementById("submitBtn").textContent = "Agregar Juego";
+            juegoEditando = id;
         }
 
-        async function eliminarUsuario(id) {
-            if (!confirm("¿Seguro que quieres eliminar este usuario?")) return;
+        async function eliminarJuego(id) {
+            if (!confirm("¿Seguro que quieres eliminar este juego?")) return;
 
-            const response = await fetch(`http://127.0.0.1:5000/users/${id}`, {
+            const response = await fetch(`http://127.0.0.1:5000/Juegos/${id}`, {
                 method: "DELETE"
             });
 
             const result = await response.json();
             alert(result.message || result.error);
-            cargarUsuarios();
+            cargarJuegos();
         }
 
-        document.addEventListener("DOMContentLoaded", cargarUsuarios);
+        document.addEventListener("DOMContentLoaded", function () {
+            cargarJuegos();
+        }); 
     </script>
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="text-center">Gestión de Usuarios</h2>
+        <h2 class="text-center">Gestión de Juegos</h2>
         
-        <form id="userForm" class="mb-4" onsubmit="agregarOActualizarUsuario(event)">
+        <form id="JuegoForm" class="mb-4" onsubmit="agregarOActualizarJuego(event)">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" required>
             </div>
             <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="email" required>
+                <label for="genero" class="form-label">Genero</label>
+                <input type="text" class="form-control" id="genero" required>
             </div>
             <div class="mb-3">
-                <label for="edad" class="form-label">Edad</label>
-                <input type="number" class="form-control" id="edad" required>
+                <label for="año_lanzamiento" class="form-label">Año lanzamiento</label>
+                <input type="number" class="form-control" id="año_lanzamiento" required>
             </div>
-            <button type="submit" id="submitBtn" class="btn btn-primary">Agregar Usuario</button>
+            <div class="mb-3">
+                <label for="copias_vendidas" class="form-label">Copias Vendidas</label>
+                <input type="number" class="form-control" id="copias_vendidas" required>
+            </div>
+            <button type="submit" id="submitBtn" class="btn btn-primary">Agregar Juego</button>
         </form>
         
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Edad</th>
+                    <th>Género</th>
+                    <th>Año de lanzamiento</th>
+                    <th>Copias Vendidas</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
