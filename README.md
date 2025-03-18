@@ -11,5 +11,5 @@ cd <NOMBRE_DEL_PROYECTO>
 python -m venv venv <br>
 venv\Scripts\activate
 <br> <br>
-3️⃣ Instalar dependencias
+3️⃣ Instalar dependencias: <br>
 pip install -r requirements.txt
