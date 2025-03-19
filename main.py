@@ -6,7 +6,6 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-#CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 app.config["MONGO_URI"] = "mongodb://localhost:27017/Juegos"
@@ -41,7 +40,7 @@ def get_games():
     for juego in db.find():
         juego['_id'] = str(juego['_id'])
         juegos.append(juego)
-    return jsonify(juegos)  # ⬅️ Antes devolvías solo 'juego', ahora es toda la lista
+    return jsonify(juegos) 
 
 # 📌 Actualizar un juego
 @app.route('/Juegos/<id>', methods=['PUT'])
@@ -57,7 +56,7 @@ def update_games(id):
         update_data["genero"] = data["genero"]
     if "año_lanzamiento" in data:
         update_data["año_lanzamiento"] = int(data["año_lanzamiento"])
-    if "copias_vendidas" in data:  # ⬅️ Ahora permite actualizar copias vendidas
+    if "copias_vendidas" in data:  
         update_data["copias_vendidas"] = int(data["copias_vendidas"])
 
     update = db.update_one({"_id": ObjectId(id)}, {"$set": update_data})    
