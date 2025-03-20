@@ -12,18 +12,23 @@
             const response = await fetch("http://127.0.0.1:5000/Juegos");;
             const juegos = await response.json();
             const tbody = document.getElementById("userTableBody");
+            console.log(juegos)
+
             tbody.innerHTML = ""; // Limpiar tabla antes de agregar datos
 
             juegos.forEach(juego => {
                 const row = document.createElement("tr");
+                console.log(juegos)
+
                 row.innerHTML = `
                     <td>${juego.nombre}</td>
                     <td>${juego.genero}</td>
-                    <td>${juego.año_lanzamiento}</td>
-                    <td>${juego.copias_vendidas}</td>
+                    <td>${juego.plataforma}</td>
+                    <td>${juego.precio}</td>
+                    <td>${juego.fecha_lanzamiento}</td>
                     <td>
-                        <button class="btn btn-warning btn-sm" onclick="editarJuego('${juego._id}', '${juego.nombre}', '${juego.genero}', '${juego.año_lanzamiento}', '${juego.copias_vendidas}')">Editar</button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarJuego('${juego._id}')">Eliminar</button>
+                        <button class="btn btn-warning btn-sm" onclick="editarJuego('${juego.id}', '${juego.nombre}', '${juego.genero}', '${juego.plataforma}', '${juego.precop}', '${juego.fecha_lanzamiento}')">Editar</button>
+                        <button class="btn btn-danger btn-sm" onclick="eliminarJuego('${juego.id}')">Eliminar</button>
                     </td>
                 `;
                 tbody.appendChild(row);
@@ -35,15 +40,18 @@
 
             const nombre = document.getElementById("nombre").value;
             const genero = document.getElementById("genero").value;
-            const año_lanzamiento = document.getElementById("año_lanzamiento").value;
-            const copias_vendidas = document.getElementById("copias_vendidas").value;
+            const plataforma = document.getElementById("plataforma").value;
+            const precio = document.getElementById("precio").value;
+            const fecha_lanzamiento = document.getElementById("fecha_lanzamiento").value;
+
+            const juegoData = { nombre, genero, plataforma, precio, fecha_lanzamiento};
 
             if (juegoEditando) {
                 // ACTUALIZAR USUARIO
                 const response = await fetch(`http://127.0.0.1:5000/Juegos/${juegoEditando}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ nombre, genero, año_lanzamiento, copias_vendidas })
+                    body: JSON.stringify(juegoData)
                 });
 
                 const result = await response.json();
@@ -55,7 +63,7 @@
                 const response = await fetch("http://127.0.0.1:5000/Juegos", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ nombre, genero, año_lanzamiento, copias_vendidas })
+                    body: JSON.stringify(juegoData)
                 });
 
                 const result = await response.json();
@@ -66,12 +74,13 @@
             cargarJuegos();
         }
 
-        function editarJuego(id, nombre, genero, año_lanzamiento, copias_vendidas ) {
+        function editarJuego(id, nombre, genero, plataforma, precio, fecha_lanzamiento) {
             document.getElementById("nombre").value = nombre;
             document.getElementById("genero").value = genero;
-            document.getElementById("año_lanzamiento").value = año_lanzamiento;
-            document.getElementById("copias_vendidas").value = copias_vendidas;
-            document.getElementById("submitBtn").textContent = "Agregar Juego";
+            document.getElementById("plataforma").value = plataforma;
+            document.getElementById("precio").value = precio;
+            document.getElementById("fecha_lanzamiento").value = fecha_lanzamiento;
+            document.getElementById("submitBtn").textContent = "Actualizar Juego";
             juegoEditando = id;
         }
 
@@ -107,16 +116,20 @@
                 <input type="text" class="form-control" id="nombre" required>
             </div>
             <div class="mb-3">
-                <label for="genero" class="form-label text-white">Genero</label>
+                <label for="genero" class="form-label text-white">Género</label>
                 <input type="text" class="form-control" id="genero" required>
             </div>
             <div class="mb-3">
-                <label for="año_lanzamiento" class="form-label text-white">Año lanzamiento</label>
-                <input type="number" class="form-control" id="año_lanzamiento" required>
+                <label for="plataforma" class="form-label text-white">Plataforma</label>
+                <input type="text" class="form-control" id="plataforma" required>
             </div>
             <div class="mb-3">
-                <label for="copias_vendidas" class="form-label text-white">Copias Vendidas</label>
-                <input type="number" class="form-control" id="copias_vendidas" required>
+                <label for="precio" class="form-label text-white">Precio</label>
+                <input type="number" class="form-control" id="precio" required>
+            </div>
+            <div class="mb-3">
+                <label for="fecha_lanzamiento" class="form-label text-white">Fecha de Lanzamiento</label>
+                <input type="date" class="form-control" id="fecha_lanzamiento" required>
             </div>
             <button type="submit" id="submitBtn" class="btn btn-primary">Agregar Juego</button>
         </form>
@@ -126,8 +139,9 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Género</th>
-                    <th>Año de lanzamiento</th>
-                    <th>Copias Vendidas</th>
+                    <th>Plataforma</th>
+                    <th>Precio</th>
+                    <th>Fecha de Lanzamiento</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
