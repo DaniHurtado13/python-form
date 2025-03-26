@@ -107,3 +107,5 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 
 ---
 ⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+
+https://gist.github.com/Villanuevand/6386899f70346d4580c723232524d35a#file-readme-espanol-md
