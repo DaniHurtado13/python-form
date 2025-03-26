@@ -14,7 +14,7 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+_Que cosas necesitas para instalar el software
 
 ```
 Python 3.11 en adelante
@@ -24,12 +24,10 @@ ODBC Driver 17 > Es necesario para la conexión a base de datos
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
-
 ```
-Da un ejemplo
+Python:
+1. Para instalar python vamos a la web oficial y lo descargamos
+2. En la instalación del .exe
 ```
 
 _Y repite_
