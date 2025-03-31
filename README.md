@@ -1,12 +1,13 @@
-# Sistema de CRUD con SQL
-
-Aplicación web para gestionar un inventario de automóviles, desarrollada con:
+# 🚗 Sistema CRUD de Vehículos con Flask y Azure SQL
+Aplicación web para gestionar un inventario de automóviles con operaciones CRUD completas, desarrollada con:
 
 Backend: Python + Flask
 
 Base de datos: Azure SQL (conexión segura mediante ODBC)
 
-Frontend: HTML/CSS básico
+Frontend: HTML/CSS + Bootstrap básico
+
+Seguridad: Credenciales protegidas con .env
 
 ## Comenzando 🚀
 
@@ -54,12 +55,6 @@ el comando odbcad32 y se nos abrirá una pestaña e iremos a la opción controla
 y verificaremos que se muestre ODBC Driver 17 for SQL Sever
 ```
 
-
-_Y repite_
-
-```
-hasta finalizar
-```
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
