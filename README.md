@@ -59,9 +59,9 @@ Ejecutamos sobre el archivo main.py
 Endpoints
 Método	   Ruta	     Descripción	    Ejemplo de Body
 ----------------------------------------------------
-POST	   /Juegos	  Crear nuevo juego	  JSON ↓
+POST	   /Juegos	Crear nuevo juego	  JSON ↓
 ----------------------------------------------------
-GET	    /Juegos	  Obtener los juegos	-
+GET	    /Juegos	Obtener los juegos	-
 ----------------------------------------------------
 PUT     /Juegos/<id>	Actualizar juego 	JSON (parcial)
 ----------------------------------------------------
