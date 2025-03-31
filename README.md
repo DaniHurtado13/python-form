@@ -63,7 +63,7 @@ POST	   /Juegos	Crear nuevo juego JSON ↓
 ----------------------------------------------------
 GET	    /Juegos	Obtener los juegos	-
 ----------------------------------------------------
-PUT     /Juegos/<id>	Actualizar juego JSON (parcial)
+PUT     /Juegos/<id>	Actualizar juego  JSON (parcial)
 ----------------------------------------------------
 DELETE	 /Juegos/<id>	Eliminar juego	-
 
