@@ -28,7 +28,8 @@ ODBC Driver 17 > Es necesario para la conexión a base de datos
 Python:
 1. Para instalar python vamos a la web oficial y lo descargamos
 2. En la instalación de python tenemos que marcar la opción "Add python to PATH"
-3. Terminada la instalación verificamos en el cmd o terminal con el siguiente comando -> python --version -> Esto nos mostrará la versión que instalamos
+3. Terminada la instalación verificamos en el cmd o terminal con el siguiente comando
+   python --version -> Esto nos mostrará la versión que instalamos
 ```
 ```
 GIT:
@@ -39,7 +40,8 @@ GIT:
   ✔ Use the OpenSSL library
   ✔ Checkout as-is, commit Unix-style line endings
   ✔ Use MinTTY (default terminal for Git Bash)
-4. Terminada la instalación verificamos en el cmd o terminal con el siguiente comando -> git --version > Esto nos mostrará la versión y servira como prueba de que se instalo correctamente
+4. Terminada la instalación verificamos en el cmd o terminal con el siguiente comando
+    git --version > Esto nos mostrará la versión y servira como prueba de que se instalo correctamente
 ```
 
 _Y repite_
