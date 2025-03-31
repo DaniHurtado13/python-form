@@ -57,7 +57,7 @@ Ejecutamos sobre el archivo main.py
 
 ```
 Endpoints
-Método	   Ruta	     Descripción	    Ejemplo de Body
+Método	   Ruta	        Descripción	 Ejemplo de Body
 ----------------------------------------------------
 POST	   /Juegos	Crear nuevo juego	  JSON ↓
 ----------------------------------------------------
