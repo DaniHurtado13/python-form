@@ -82,7 +82,7 @@ _Ejemplo de JSON (POST/PUT)_
 ### 📦 Estructura del Proyecto
 ```
 .
-├── app.py                # API Flask
+├── main.py                # API Flask
 ├── form.html             # Frontend principal
 ├── requirements.txt      # Dependencias Python
 └── README.md             # Este archivo
