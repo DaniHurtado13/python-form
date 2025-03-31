@@ -69,7 +69,7 @@ DELETE	 /Juegos/<id>	Eliminar juego
 
 ```
 
-_Ejemplo de JSON (POST/PUT)
+_Ejemplo de JSON (POST/PUT)_
 ```
 {
     "nombre": "The Legend of Zelda",
