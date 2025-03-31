@@ -50,7 +50,7 @@ pip install -r requirements.txt
 <br>
 
 4. Configurar base de datos <br>
-   ° Crear archivo .env en /src con:
+   - Crear archivo .env en /src con:
 ```
 DB_SERVER="tpc:tu-servidor.database.windows.net"
 DB_DATABASE="nombre-db"
@@ -67,9 +67,18 @@ DB_PORT="1433" // Opcional
 ```
 python src/app.py
 ```
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
-## Ejecutando las pruebas ⚙️
+
+## ⚙️ Estructura del Proyecto
+
+```
+/src
+├── app.py                # Lógica principal
+├── database.py           # Conexión a Azure SQL
+├── requirements.txt      # Dependencias
+/templates
+└── index.html            # Vista principal
+```
 
 _Explica como ejecutar las pruebas automatizadas para este sistema_
 
