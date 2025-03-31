@@ -26,12 +26,40 @@ ODBC Driver 17 > Es necesario para la conexión a base de datos
 
 ### Instalación 🔧
 
-Clonar repositorio
+1. Clonar repositorio
+```
+git clone https://github.com/DaniHurtado13/python-form.git
+cd python-form
+git checkout SQLCrud
 ```
 
+2. Configurar entorno virtual
+```
+- python -m venv venv
+- venv\Scripts\activate
 ```
 
+3. Instalar dependencias
+```
+pip install -r requirements.txt
+```
 
+4. Configurar base de datos
+   ° Crear archivo .env en /src con:
+```
+DB_SERVER="tpc:tu-servidor.database.windows.net"
+DB_DATABASE="nombre-db"
+DB_USER="tu-usuario"
+DB_PASSWORD="tu-contraseña"
+DB_DRIVER="ODBC Driver 17 for SQL Server"
+DB_PORT="1433" // Opcional
+```
+  ° Configurar firewall en Azure Portal para permitir tu IP
+
+5. Ejecutar aplicación en la terminal
+```
+python src/app.py
+```
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
 ## Ejecutando las pruebas ⚙️
