@@ -32,7 +32,7 @@ git clone https://github.com/DaniHurtado13/python-form.git
 cd python-form
 git checkout SQLCrud
 ```
-
+<br>
 
 2. Configurar entorno virtual
 ```
@@ -40,12 +40,14 @@ git checkout SQLCrud
 - venv\Scripts\activate
 ```
 
+<br>
 
 3. Instalar dependencias
 ```
 pip install -r requirements.txt
 ```
 
+<br>
 
 4. Configurar base de datos <br>
    ° Crear archivo .env en /src con:
@@ -57,7 +59,7 @@ DB_PASSWORD="tu-contraseña"
 DB_DRIVER="ODBC Driver 17 for SQL Server"
 DB_PORT="1433" // Opcional
 ```
-  ° Configurar firewall en Azure Portal para permitir tu IP
+  - Configurar firewall en Azure Portal para permitir tu IP
 
 
 
