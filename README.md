@@ -61,11 +61,11 @@ Método	   Ruta	        Descripción
 --------------------------------------
 POST	   /Juegos	Crear nuevo juego  
 --------------------------------------
-GET	    /Juegos	Obtener los juegos	-
+GET	    /Juegos	Obtener los juegos	
 --------------------------------------
 PUT     /Juegos/<id>	Actualizar juego 
 --------------------------------------
-DELETE	 /Juegos/<id>	Eliminar juego	-
+DELETE	 /Juegos/<id>	Eliminar juego	
 
 ```
 
