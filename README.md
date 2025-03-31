@@ -110,10 +110,3 @@ DB_SERVER="tcp:tu-servidor.database.windows.net"
 * [PyODBC](https://github.com/mkleehammer/pyodbc) - Conexión a Azure SQL
 * [BootStrap](https://getbootstrap.com/) -  Estilos básicos
 
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-
-https://gist.github.com/Villanuevand/6386899f70346d4580c723232524d35a#file-readme-espanol-md
