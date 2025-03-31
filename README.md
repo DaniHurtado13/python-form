@@ -14,7 +14,7 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software
+Que cosas necesitas para instalar el software
 
 ```
 Python 3.11 en adelante
@@ -27,7 +27,19 @@ ODBC Driver 17 > Es necesario para la conexión a base de datos
 ```
 Python:
 1. Para instalar python vamos a la web oficial y lo descargamos
-2. En la instalación del .exe
+2. En la instalación de python tenemos que marcar la opción "Add python to PATH"
+3. Terminada la instalación verificamos en el cmd o terminal con el siguiente comando -> python --version -> Esto nos mostrará la versión que instalamos
+```
+```
+GIT:
+1. Para instalar GIT vamos a la web oficial y lo descargamos
+2. Ejecutamos el instalador (.exe)
+3. Opciones recomendadas: 
+  ✔ Use Git from the Windows Command Prompt
+  ✔ Use the OpenSSL library
+  ✔ Checkout as-is, commit Unix-style line endings
+  ✔ Use MinTTY (default terminal for Git Bash)
+4. Terminada la instalación verificamos en el cmd o terminal con el siguiente comando -> git --version > Esto nos mostrará la versión y servira como prueba de que se instalo correctamente
 ```
 
 _Y repite_
