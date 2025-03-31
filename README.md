@@ -44,7 +44,7 @@ git checkout SQLCrud
 pip install -r requirements.txt
 ```
 
-4. Configurar base de datos
+4. Configurar base de datos <br>
    ° Crear archivo .env en /src con:
 ```
 DB_SERVER="tpc:tu-servidor.database.windows.net"
