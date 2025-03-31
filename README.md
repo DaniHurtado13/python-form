@@ -88,25 +88,23 @@ _✔ CRUD completo de vehículos <br>
 ✔ Mensajes flash de confirmación/error <br>
 ✔ Conexión segura a Azure SQL_ 
 
-```
-Da un ejemplo
-```
+<br>
 
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
+### 🚨 Solución de Problemas Comunes
+_Error de conexión a Azure SQL
 ```
-Da un ejemplo
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17...')
 ```
 
-## Despliegue 📦
+Solución:
+   1. Verificar que el firewall de Azure permita tu IP actual
+   2. Confirmar que el string de conexión incluya tcp:
 
-_Agrega notas adicionales sobre como hacer deploy_
+```
+DB_SERVER="tcp:tu-servidor.database.windows.net"
+```
 
 ## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
