@@ -80,11 +80,13 @@ python src/app.py
 └── index.html            # Vista principal
 ```
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
 
-### Analice las pruebas end-to-end 🔩
+### 🛠️ Funcionalidades Clave
 
-_Explica que verifican estas pruebas y por qué_
+_✔ CRUD completo de vehículos
+✔ Validación de año (4 dígitos)
+✔ Mensajes flash de confirmación/error
+✔ Conexión segura a Azure SQL_
 
 ```
 Da un ejemplo
