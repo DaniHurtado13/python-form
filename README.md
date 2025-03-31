@@ -33,16 +33,19 @@ cd python-form
 git checkout SQLCrud
 ```
 
+
 2. Configurar entorno virtual
 ```
 - python -m venv venv
 - venv\Scripts\activate
 ```
 
+
 3. Instalar dependencias
 ```
 pip install -r requirements.txt
 ```
+
 
 4. Configurar base de datos <br>
    ° Crear archivo .env en /src con:
@@ -55,6 +58,8 @@ DB_DRIVER="ODBC Driver 17 for SQL Server"
 DB_PORT="1433" // Opcional
 ```
   ° Configurar firewall en Azure Portal para permitir tu IP
+
+
 
 5. Ejecutar aplicación en la terminal
 ```
