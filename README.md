@@ -83,10 +83,10 @@ python src/app.py
 
 ### 🛠️ Funcionalidades Clave
 
-_✔ CRUD completo de vehículos
-✔ Validación de año (4 dígitos)
-✔ Mensajes flash de confirmación/error
-✔ Conexión segura a Azure SQL_
+_✔ CRUD completo de vehículos <br>
+✔ Validación de año (4 dígitos) <br>
+✔ Mensajes flash de confirmación/error <br>
+✔ Conexión segura a Azure SQL_ 
 
 ```
 Da un ejemplo
