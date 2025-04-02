@@ -46,7 +46,14 @@ pip install -r requirements.txt
 
 <br>
 
-4. Ejecutar aplicación en la terminal
+4. Asegurarse de que mongo este corriendo
+```
+Ejecutar en la terminal o el cmd el siguiente comando => mongod
+``` 
+
+<br> 
+
+5. Ejecutar aplicación en la terminal
 ```
 Run python file, esquina superior derecha
 Ejecutamos sobre el archivo main.py
