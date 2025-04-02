@@ -55,8 +55,11 @@ Ejecutar en la terminal o el cmd el siguiente comando => mongod
 
 5. Ejecutar aplicación en la terminal
 ```
-Run python file, esquina superior derecha
+Primera manera: Run python file, esquina superior derecha
 Ejecutamos sobre el archivo main.py
+
+Segunda manera: ir a la terminal, asegurarse de estar dentro la carpeta raíz
+introudicr el siguiente comando => python main.py
 ```
 
 
